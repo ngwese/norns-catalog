@@ -4,12 +4,12 @@
     "kind": "script_catalog"
   },
   "catalog_name": "ngwese",
-  "entries": {
-    "meso": {
+  "entries": [
+    {
       "project_name": "meso",
       "project_url": "https://github.com/ngwese/meso.git",
       "description": "abstractions to build on",
       "tags": ["powermate", "hid", "lib"]
     }
-  }
+  ]
 }
