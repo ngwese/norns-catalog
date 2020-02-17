@@ -10,6 +10,12 @@
       "project_url": "https://github.com/ngwese/meso.git",
       "description": "abstractions to build on",
       "tags": ["powermate", "hid", "lib"]
+    },
+    {
+      "project_name": "sky",
+      "project_url": "https://github.com/ngwese/sky.git",
+      "description": "declarative event processing",
+      "tags": ["lib"]
     }
   ]
 }
