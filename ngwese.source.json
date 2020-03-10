@@ -3,11 +3,4 @@
     "version": 1,
     "kind": "catalog_source"
   },
-  "source": {
-      "name": "ngwese",
-      "method": "download",
-      "parameters": {
-          "url": "https://raw.githubusercontent.com/ngwese/norns-catalog/master/ngwese.json"
-      }
-  }
 }
