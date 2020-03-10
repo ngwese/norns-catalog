@@ -19,18 +19,23 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
+    
+    - name: download schemas
+      run: |
+        wget https://raw.githubusercontent.com/monome/maiden/master/pkg/catalog/source.schema.json
+        wget https://raw.githubusercontent.com/monome/maiden/master/pkg/catalog/catalog.schema.json
 
     - name: validate source
       uses: docker://orrosenblatt/validate-json-action:latest
       env:
-          INPUT_SCHEMA: https://raw.githubusercontent.com/monome/maiden/master/pkg/catalog/source.schema.json
+          INPUT_SCHEMA: source.schema.json
           INPUT_JSONS: ngwese.source.json
 
 
     - name: validate catalog
       uses: docker://orrosenblatt/validate-json-action:latest
       env:
-          INPUT_SCHEMA: https://raw.githubusercontent.com/monome/maiden/master/pkg/catalog/catalog.schema.json
+          INPUT_SCHEMA: catalog.schema.json
           INPUT_JSONS: ngwese.json
 
 
