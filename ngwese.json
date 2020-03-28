@@ -6,6 +6,12 @@
   "catalog_name": "ngwese",
   "entries": [
     {
+      "project_name": "flora",
+      "project_url": "https://github.com/ngwese/flora.git",
+      "description": "from another region",
+      "tags": ["lv2"]
+    },
+    {
       "project_name": "meso",
       "project_url": "https://github.com/ngwese/meso.git",
       "description": "abstractions to build on",
