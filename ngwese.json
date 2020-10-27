@@ -22,6 +22,12 @@
       "project_url": "https://github.com/ngwese/sky.git",
       "description": "declarative event processing",
       "tags": ["lib"]
+    },
+    {
+      "project_name": "tambla",
+      "project_url": "https://github.com/ngwese/tambla.git",
+      "description": "declarative event processing",
+      "tags": ["midi", "gen", "sky", "sequencer"]
     }
   ]
 }
