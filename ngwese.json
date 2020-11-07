@@ -24,10 +24,11 @@
       "tags": ["lib"]
     },
     {
-      "project_name": "tambla",
+      "project_name": "tambla-dev",
       "project_url": "https://github.com/ngwese/tambla.git",
       "description": "declarative event processing",
-      "tags": ["midi", "gen", "sky", "sequencer"]
+      "tags": ["midi", "gen", "sky", "sequencer"],
+      "branch": "dev"
     }
   ]
 }
