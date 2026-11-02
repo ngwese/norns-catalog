@@ -112,12 +112,13 @@ cat catalog.json
 }
 ```
 
-The resulting catalog file could be stored in git, uploaded to a website, or
-manually copied to the "dust/data/catalogs" folder on a given device.
+The resulting catalog file can be uploaded to a website, served locally, or
+manually copied to the "dust/data/catalogs" folder on a given device. As an
+example this repository publishes to a stable GitHub Pages URL via GitHub
+Actions instead of committing the built file.
 
 The `build` sub-command includes options to include/exclude entries based on
-tags if desired. This sub-command could be useful as part of a catalog CI or
-publishing pipeline.
+tags if desired.
 
 ```sh
 ./catalog.sh build --help
@@ -169,7 +170,31 @@ curl http://127.0.0.1:8000/demo.json
 This basic server could be extended to support query args as part of the URL in
 order to provide server side filtering based on tags (for example).
 
-### Entry format
+### Publishing
+
+On pushes to `main` that change catalog inputs (or via manual workflow dispatch),
+GitHub Actions runs `./catalog.sh build` and deploys the result to GitHub Pages.
+
+Stable URL:
+
+```text
+https://<owner>.github.io/<repo>/<catalog_name>.json
+```
+
+For this repository with `catalog_name` `demo`, that is:
+
+```text
+https://ngwese.github.io/norns-catalog/demo.json
+```
+
+Replicating this configuration in a new repository requires one-time setup: in
+the GitHub repo, open **Settings → Pages** and set **Source** to **GitHub
+Actions**.
+
+`./catalog.sh build-source` writes a maiden source file whose download URL is
+that Pages location, based on the repository's GitHub `origin` remote.
+
+### Entry Format
 
 Each file in `entries/` is a single maiden catalog entry object, for example:
 
