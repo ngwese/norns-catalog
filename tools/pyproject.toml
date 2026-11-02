@@ -2,7 +2,6 @@
 name = "catalog"
 version = "0.1.0"
 description = "Command-line tooling for assembling and validating norns script catalogs"
-readme = "README.md"
 authors = [
     { name = "Greg Wuller", email = "greg@afofo.com" }
 ]
