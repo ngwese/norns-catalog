@@ -36,6 +36,9 @@ jobs:
           NAME="$(python3 -c 'import json; print(json.load(open("config.json"))["catalog_name"])')"
           mkdir -p _site
           ./catalog.sh build "_site/${NAME}.json"
+          test -s "_site/${NAME}.json"
+          # GitHub Pages requires a top-level entry file in the artifact.
+          printf '%s\n' "<!DOCTYPE html><title>${NAME}</title><a href=\"${NAME}.json\">${NAME}.json</a>" > _site/index.html
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
