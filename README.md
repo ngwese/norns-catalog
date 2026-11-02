@@ -12,6 +12,9 @@ catalogs (sources) configured on a given device. Two catalogs, `base` and
 The catalog source files can be found in the `data/sources` folder within the
 file explorer.
 
+_This repository is intended to show how one can create their own personal
+catalog or a catalog for a focused community._
+
 ## Adding Static Catalogs
 
 New catalogs can be added to a device defining an additional source. In `maiden`
