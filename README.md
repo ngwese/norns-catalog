@@ -172,8 +172,9 @@ order to provide server side filtering based on tags (for example).
 
 ### Publishing
 
-On pushes to `main` that change catalog inputs (or via manual workflow dispatch),
-GitHub Actions runs `./catalog.sh build` and deploys the result to GitHub Pages.
+Pull requests that change catalog inputs run `./catalog.sh build` so invalid
+entries fail CI before merge. On pushes to `main` (or via manual workflow
+dispatch), the same build is deployed to GitHub Pages.
 
 Stable URL:
 
