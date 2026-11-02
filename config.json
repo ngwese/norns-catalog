@@ -1,0 +1,5 @@
+{
+  "catalog_name": "demo",
+  "catalog_schema": "https://raw.githubusercontent.com/monome/maiden/refs/heads/main/pkg/catalog/catalog.schema.json",
+  "source_schema": "https://raw.githubusercontent.com/monome/maiden/refs/heads/main/pkg/catalog/source.schema.json"
+}
