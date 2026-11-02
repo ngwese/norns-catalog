@@ -1,0 +1,54 @@
+name: Publish catalog
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "entries/**"
+      - "config.json"
+      - "tools/**"
+      - "catalog.sh"
+      - ".github/workflows/publish.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+
+      - name: Build catalog
+        run: |
+          NAME="$(python3 -c 'import json; print(json.load(open("config.json"))["catalog_name"])')"
+          mkdir -p _site
+          ./catalog.sh build "_site/${NAME}.json"
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

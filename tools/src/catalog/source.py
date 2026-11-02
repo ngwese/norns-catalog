@@ -32,17 +32,6 @@ def git_origin_url(repo_root: Path) -> str:
         raise ValueError(f"unable to read git origin in {repo_root}") from exc
 
 
-def git_default_branch(repo_root: Path) -> str:
-    try:
-        ref = _run_git(repo_root, "symbolic-ref", "refs/remotes/origin/HEAD")
-        return ref.rsplit("/", 1)[-1]
-    except subprocess.CalledProcessError:
-        try:
-            return _run_git(repo_root, "rev-parse", "--abbrev-ref", "HEAD")
-        except subprocess.CalledProcessError as exc:
-            raise ValueError(f"unable to determine git branch in {repo_root}") from exc
-
-
 def parse_github_repo(origin: str) -> tuple[str, str]:
     origin = origin.strip()
 
@@ -61,8 +50,7 @@ def parse_github_repo(origin: str) -> tuple[str, str]:
 
 def catalog_download_url(repo_root: Path, catalog_name: str) -> str:
     owner, repo = parse_github_repo(git_origin_url(repo_root))
-    branch = git_default_branch(repo_root)
-    return f"https://raw.githubusercontent.com/{owner}/{repo}/{branch}/{catalog_name}.json"
+    return f"https://{owner}.github.io/{repo}/{catalog_name}.json"
 
 
 def build_source(
